@@ -1,30 +1,25 @@
 import { useState } from 'react'
+import { AddCategory } from './components/AddCategory'
 
 export const GifExpertApp = () => {
 
-    const [ Categories , SetCategories ] = useState(['One Punch', 'Samurai X', 'Hunter X Hunter'])
+    const [ categories , setCategories ] = useState(['One Punch', 'Samurai X', 'Hunter X Hunter'])
 
     const onAddCategory = (e) => {
         e.preventDefault()
 
 
-        SetCategories(['Naruto' , ...Categories])
+        
     }
 
   return (
     <div className="bg-slate-400 h-screen p-8">
         <h1>Gif Expert App</h1>
 
-        <form className='p-4' onSubmit={onAddCategory}>
-            <input
-                type="text"
-                placeholder="Search your gif here..." 
-            />
-            <button className='m-4 p-2 bg-orange-50'>Agregar</button>
-        </form>
+        <AddCategory setCategories = { setCategories } />
 
         {
-            Categories.map(category => {
+            categories.map(category => {
                 return <li key={category}>{category}</li>
             })    
         }
