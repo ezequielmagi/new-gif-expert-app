@@ -5,7 +5,7 @@ export const AddCategory = ( { onNewCategory } ) => {
     const [ inputValue , setInputValue ] = useState('')
 
     const onInputChange = ( { target } ) =>{
-        console.log(target.value)
+       
         setInputValue(target.value)
     }
 
@@ -22,7 +22,7 @@ export const AddCategory = ( { onNewCategory } ) => {
     }
 
   return (
-    <form className='p-4' onSubmit={handleSubmit}>
+    <form className='mt-4 p-4 flex flex-col justify-evenly' onSubmit={handleSubmit}>
             <input
                 className='p-2 rounded-md'
                 type="text"
