@@ -1,20 +1,12 @@
-import { getGifs } from '../helpers/getGifs';
-import { useEffect, useState } from 'react';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 import { GifGridItem } from './GifGridItem';
+
+
 
 export const GifGrid = ( { category } ) => {
 
+    const { images , isLoading } = useFetchGifs( category )
 
-    const [ images, setImages ] = useState([])
-
-    const getImages = async () =>{
-        const newImages = await getGifs( category )
-        setImages( newImages )
-    }
-
-    useEffect( () => {
-        getImages()
-    }, [])
 
 
   return (
@@ -23,7 +15,7 @@ export const GifGrid = ( { category } ) => {
         <div className="card-grid flex flex-wrap justify-evenly">
             {
                 images.map( ({ id , title, url }) => (
-                    <GifGridItem id={id} title={title} url={url} />
+                    <GifGridItem key={id} id={id} title={title} url={url} />
                 ))
             }
         </div>
